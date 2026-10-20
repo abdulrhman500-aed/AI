@@ -1,0 +1,277 @@
+:root {
+    --primary-color: #005f73;
+    --secondary-color: #0a9396;
+    --accent-color: #94d2bd;
+    --background-color: #f0f8ff;
+    --text-color: #001219;
+    --container-bg: #ffffff;
+    --message-user-bg: #0a9396;
+    --message-user-text: #ffffff;
+    --message-assistant-bg: #e9ecef;
+    --message-assistant-text: #001219;
+    --button-hover-bg: #003f5c;
+    --disabled-bg: #adb5bd;
+    --error-color: #d00000;
+    --stop-button-bg: #c0392b;
+    --stop-button-hover-bg: #a93226;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+header p {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+}
+
+#conversationBox {
+    width: 90%;
+    max-width: 800px;
+    height: 50vh;
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    overflow-y: auto;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: var(--container-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 12px 18px;
+    border-radius: 20px;
+    max-width: 75%;
+    word-wrap: break-word;
+    font-size: 1.1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.user-message {
+    background-color: var(--message-user-bg);
+    color: var(--message-user-text);
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.assistant-message {
+    background-color: var(--message-assistant-bg);
+    color: var(--message-assistant-text);
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+}
+
+.assistant-message.error {
+    background-color: var(--error-color);
+    color: white;
+}
+
+#controlsContainer {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.control-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 1.8em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.control-button:hover,
+.control-button:focus {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.1);
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.control-button#stopAudioButton {
+    background-color: var(--stop-button-bg);
+}
+
+.control-button#stopAudioButton:hover,
+.control-button#stopAudioButton:focus {
+    background-color: var(--stop-button-hover-bg);
+}
+
+.control-button.disabled {
+    background-color: var(--disabled-bg);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.control-button.listening {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+#imageUpload {
+    display: none;
+}
+
+#statusArea {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: var(--secondary-color);
+    min-height: 1.5em;
+}
+
+#statusArea kbd {
+    background-color: var(--message-assistant-bg);
+    border: 1px solid var(--accent-color);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--primary-color);
+}
+
+footer {
+    margin-top: auto;
+    padding: 20px;
+    font-size: 1em;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+#cameraArea {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--container-bg);
+    padding: 25px;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+#cameraPreview {
+    width: 100%;
+    max-height: 60vh;
+    display: block;
+    margin: 0 auto 15px auto;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+}
+
+#cameraArea button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+#cameraArea button:hover {
+    background-color: var(--primary-color);
+}
+
+canvas {
+    display: none;
+}
+
+button:focus,
+input[type="file"]:focus+label {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Style for images within conversation messages */
+.conversation-image {
+    display: block; /* Ensure it takes up its own space */
+    max-width: 250px; /* Limit width, adjust as needed */
+    max-height: 200px; /* Limit height, adjust as needed */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners */
+    margin-top: 8px; /* Space above the image */
+    margin-bottom: 5px; /* Space below the image */
+    border: 1px solid var(--accent-color); /* Optional subtle border */
+}
+
+/* Adjust padding and width for messages containing only an image */
+.message:has(.conversation-image):not(:has(p)) {
+    padding: 5px; /* Reduce padding further for image-only messages */
+    width: fit-content; /* Make the bubble fit the image width */
+    max-width: 270px; /* Still apply a max-width based on image max-width + padding */
+}
+
+/* Apply fit-content specifically to user messages with only images */
+.user-message:has(.conversation-image):not(:has(p)) {
+    width: fit-content;
+    /* max-width is inherited or can be set specifically if needed */
+}
+
+/* Ensure text flows correctly around the image if both exist */
+.message p {
+    margin-top: 5px; /* Add space between image and text if both exist */
+}
+

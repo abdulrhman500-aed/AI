@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Assistant for Visually Impaired Users</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Voice Assistant for Visually Impaired Users</h1>
+        <p>Speak, listen, and understand your surroundings</p>
+    </header>
+
+    <div id="conversationBox">
+        <p style="color: var(--secondary-color); text-align: center;">Your conversation will appear here</p>
+    </div>
+
+    <div id="controlsContainer">
+        <button id="micButton" class="control-button" title="Start/Stop Listening (Space)" aria-label="Start or Stop Listening">
+            <i class="fas fa-microphone"></i>
+        </button>
+        <button id="cameraButton" class="control-button" title="Open Camera" aria-label="Open Camera">
+            <i class="fas fa-camera"></i>
+        </button>
+        <label for="imageUpload" id="uploadButtonLabel" class="control-button" title="Upload Image" aria-label="Upload Image">
+            <i class="fas fa-upload"></i>
+        </label>
+        <input type="file" id="imageUpload" accept="image/*" aria-labelledby="uploadButtonLabel">
+        <button id="replayButton" class="control-button" title="Replay Last Response" aria-label="Replay last audio response">
+            <i class="fas fa-redo"></i>
+        </button>
+        <button id="stopAudioButton" class="control-button" title="Stop Audio Playback" aria-label="Stop current audio playback">
+            <i class="fas fa-stop-circle"></i>
+        </button>
+    </div>
+
+    <div id="statusArea">
+        Press <kbd>Space</kbd> to start/stop listening
+    </div>
+    <div id="loadingSpinner" class="loader"></div>
+
+    <div id="cameraArea">
+        <h2>Camera</h2>
+        <video id="cameraPreview" autoplay playsinline></video>
+        <canvas id="captureCanvas"></canvas>
+        <button id="captureButton" aria-label="Capture Image">Capture Image</button>
+        <button id="closeCameraButton" aria-label="Close Camera">Close Camera</button>
+    </div>
+
+    <footer>
+        Voice Assistant - College Project
+    </footer>
+
+    <audio id="audioPlayer" style="display:none;"></audio>
+
+    <script src="static/js/main.js"></script>
+</body>
+</html>
